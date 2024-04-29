@@ -1,0 +1,1392 @@
+
+Driver.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007d4  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000e  00800060  000007d4  00000868  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000004f  0080006e  0080006e  00000876  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000876  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000008a8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001f0  00000000  00000000  000008e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000019f6  00000000  00000000  00000ad4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000e2e  00000000  00000000  000024ca  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000101d  00000000  00000000  000032f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000006c8  00000000  00000000  00004318  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000a6c  00000000  00000000  000049e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000011f1  00000000  00000000  0000544c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000190  00000000  00000000  0000663d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 32 00 	jmp	0x64	; 0x64 <__ctors_end>
+   4:	0c 94 6b 01 	jmp	0x2d6	; 0x2d6 <__vector_1>
+   8:	0c 94 92 01 	jmp	0x324	; 0x324 <__vector_2>
+   c:	0c 94 b9 01 	jmp	0x372	; 0x372 <__vector_3>
+  10:	0c 94 2e 02 	jmp	0x45c	; 0x45c <__vector_4>
+  14:	0c 94 55 02 	jmp	0x4aa	; 0x4aa <__vector_5>
+  18:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  1c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  20:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  24:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  28:	0c 94 e0 01 	jmp	0x3c0	; 0x3c0 <__vector_10>
+  2c:	0c 94 07 02 	jmp	0x40e	; 0x40e <__vector_11>
+  30:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  34:	0c 94 5e 03 	jmp	0x6bc	; 0x6bc <__vector_13>
+  38:	0c 94 85 03 	jmp	0x70a	; 0x70a <__vector_14>
+  3c:	0c 94 ac 03 	jmp	0x758	; 0x758 <__vector_15>
+  40:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  44:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  48:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  4c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  50:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  54:	b8 02       	muls	r27, r24
+  56:	c5 02       	muls	r28, r21
+  58:	d2 02       	muls	r29, r18
+  5a:	de 02       	muls	r29, r30
+  5c:	eb 02       	muls	r30, r27
+  5e:	f8 02       	muls	r31, r24
+  60:	05 03       	mulsu	r16, r21
+  62:	12 03       	mulsu	r17, r18
+
+00000064 <__ctors_end>:
+  64:	11 24       	eor	r1, r1
+  66:	1f be       	out	0x3f, r1	; 63
+  68:	cf e5       	ldi	r28, 0x5F	; 95
+  6a:	d8 e0       	ldi	r29, 0x08	; 8
+  6c:	de bf       	out	0x3e, r29	; 62
+  6e:	cd bf       	out	0x3d, r28	; 61
+
+00000070 <__do_copy_data>:
+  70:	10 e0       	ldi	r17, 0x00	; 0
+  72:	a0 e6       	ldi	r26, 0x60	; 96
+  74:	b0 e0       	ldi	r27, 0x00	; 0
+  76:	e4 ed       	ldi	r30, 0xD4	; 212
+  78:	f7 e0       	ldi	r31, 0x07	; 7
+  7a:	02 c0       	rjmp	.+4      	; 0x80 <__do_copy_data+0x10>
+  7c:	05 90       	lpm	r0, Z+
+  7e:	0d 92       	st	X+, r0
+  80:	ae 36       	cpi	r26, 0x6E	; 110
+  82:	b1 07       	cpc	r27, r17
+  84:	d9 f7       	brne	.-10     	; 0x7c <__do_copy_data+0xc>
+
+00000086 <__do_clear_bss>:
+  86:	20 e0       	ldi	r18, 0x00	; 0
+  88:	ae e6       	ldi	r26, 0x6E	; 110
+  8a:	b0 e0       	ldi	r27, 0x00	; 0
+  8c:	01 c0       	rjmp	.+2      	; 0x90 <.do_clear_bss_start>
+
+0000008e <.do_clear_bss_loop>:
+  8e:	1d 92       	st	X+, r1
+
+00000090 <.do_clear_bss_start>:
+  90:	ad 3b       	cpi	r26, 0xBD	; 189
+  92:	b2 07       	cpc	r27, r18
+  94:	e1 f7       	brne	.-8      	; 0x8e <.do_clear_bss_loop>
+  96:	0e 94 36 01 	call	0x26c	; 0x26c <main>
+  9a:	0c 94 e8 03 	jmp	0x7d0	; 0x7d0 <_exit>
+
+0000009e <__bad_interrupt>:
+  9e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a2 <LCD_lcd_kick>:
+	Dir_lcd_port=0xFF;
+	lcd_control &= ~(1<<RW_switch);
+	
+}*/
+void LCD_lcd_kick(){
+	lcd_control |= (1 << E_switch);
+  a2:	8b b3       	in	r24, 0x1b	; 27
+  a4:	84 60       	ori	r24, 0x04	; 4
+  a6:	8b bb       	out	0x1b, r24	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a8:	83 ed       	ldi	r24, 0xD3	; 211
+  aa:	90 e3       	ldi	r25, 0x30	; 48
+  ac:	01 97       	sbiw	r24, 0x01	; 1
+  ae:	f1 f7       	brne	.-4      	; 0xac <LCD_lcd_kick+0xa>
+  b0:	00 c0       	rjmp	.+0      	; 0xb2 <LCD_lcd_kick+0x10>
+  b2:	00 00       	nop
+	_delay_ms(50);
+	lcd_control &= ~(1 << E_switch);
+  b4:	8b b3       	in	r24, 0x1b	; 27
+  b6:	8b 7f       	andi	r24, 0xFB	; 251
+  b8:	8b bb       	out	0x1b, r24	; 27
+  ba:	08 95       	ret
+
+000000bc <LCD_check_lcd_isbusy>:
+}
+
+void LCD_check_lcd_isbusy(){
+	Dir_lcd_port &= ~(0xFF<<Shift);
+  bc:	8a b3       	in	r24, 0x1a	; 26
+  be:	1a ba       	out	0x1a, r1	; 26
+	lcd_control |= (1 << RW_switch);
+  c0:	8b b3       	in	r24, 0x1b	; 27
+  c2:	81 60       	ori	r24, 0x01	; 1
+  c4:	8b bb       	out	0x1b, r24	; 27
+	lcd_control &= ~(1 << RS_switch);
+  c6:	8b b3       	in	r24, 0x1b	; 27
+  c8:	8d 7f       	andi	r24, 0xFD	; 253
+  ca:	8b bb       	out	0x1b, r24	; 27
+	LCD_lcd_kick();
+  cc:	0e 94 51 00 	call	0xa2	; 0xa2 <LCD_lcd_kick>
+	Dir_lcd_port |= (0xFF<<Shift);
+  d0:	8a b3       	in	r24, 0x1a	; 26
+  d2:	8f ef       	ldi	r24, 0xFF	; 255
+  d4:	8a bb       	out	0x1a, r24	; 26
+	lcd_control &= ~(1 << RW_switch);
+  d6:	8b b3       	in	r24, 0x1b	; 27
+  d8:	8e 7f       	andi	r24, 0xFE	; 254
+  da:	8b bb       	out	0x1b, r24	; 27
+  dc:	08 95       	ret
+
+000000de <Send_command>:
+	
+}
+
+
+void Send_command (unsigned char command){
+  de:	cf 93       	push	r28
+  e0:	c8 2f       	mov	r28, r24
+	
+	LCD_check_lcd_isbusy();
+  e2:	0e 94 5e 00 	call	0xbc	; 0xbc <LCD_check_lcd_isbusy>
+	lcd_control &= ~((1 << RS_switch) | (1<<RW_switch));
+	_delay_ms(1);
+	LCD_lcd_kick();
+	#endif*/
+	#ifdef FOUR_BIT_MODE
+	LCD_check_lcd_isbusy();
+  e6:	0e 94 5e 00 	call	0xbc	; 0xbc <LCD_check_lcd_isbusy>
+	//lcd_port = (lcd_port & 0x0F) | (command & 0xF0);
+	lcd_port = (lcd_port & 0x87) | ((command >>1) & 0x78);//phisical lcd
+  ea:	8b b3       	in	r24, 0x1b	; 27
+  ec:	9c 2f       	mov	r25, r28
+  ee:	96 95       	lsr	r25
+  f0:	98 77       	andi	r25, 0x78	; 120
+  f2:	87 78       	andi	r24, 0x87	; 135
+  f4:	89 2b       	or	r24, r25
+  f6:	8b bb       	out	0x1b, r24	; 27
+	lcd_control &= ~ ((1<<RW_switch)|(1<<RS_switch));
+  f8:	8b b3       	in	r24, 0x1b	; 27
+  fa:	8c 7f       	andi	r24, 0xFC	; 252
+  fc:	8b bb       	out	0x1b, r24	; 27
+	LCD_lcd_kick ();
+  fe:	0e 94 51 00 	call	0xa2	; 0xa2 <LCD_lcd_kick>
+	//lcd_port = (lcd_port & 0x0F) | (command << 4);
+	lcd_port = (lcd_port & 0x87 ) | ((command <<3) & 0x78);//phisical lcd
+ 102:	2b b3       	in	r18, 0x1b	; 27
+ 104:	8c 2f       	mov	r24, r28
+ 106:	90 e0       	ldi	r25, 0x00	; 0
+ 108:	88 0f       	add	r24, r24
+ 10a:	99 1f       	adc	r25, r25
+ 10c:	88 0f       	add	r24, r24
+ 10e:	99 1f       	adc	r25, r25
+ 110:	88 0f       	add	r24, r24
+ 112:	99 1f       	adc	r25, r25
+ 114:	92 2f       	mov	r25, r18
+ 116:	97 78       	andi	r25, 0x87	; 135
+ 118:	88 77       	andi	r24, 0x78	; 120
+ 11a:	89 2b       	or	r24, r25
+ 11c:	8b bb       	out	0x1b, r24	; 27
+	lcd_control &= ~ ((1<<RW_switch)|(1<<RS_switch));
+ 11e:	8b b3       	in	r24, 0x1b	; 27
+ 120:	8c 7f       	andi	r24, 0xFC	; 252
+ 122:	8b bb       	out	0x1b, r24	; 27
+	LCD_lcd_kick();
+ 124:	0e 94 51 00 	call	0xa2	; 0xa2 <LCD_lcd_kick>
+    #endif
+	
+	
+	
+}
+ 128:	cf 91       	pop	r28
+ 12a:	08 95       	ret
+
+0000012c <LCD_clear_screen>:
+void LCD_clear_screen(){
+	Send_command(LCD_CLEAR_SCREEN);
+ 12c:	81 e0       	ldi	r24, 0x01	; 1
+ 12e:	0e 94 6f 00 	call	0xde	; 0xde <Send_command>
+ 132:	08 95       	ret
+
+00000134 <Lcd_init>:
+ 134:	87 e8       	ldi	r24, 0x87	; 135
+ 136:	93 e1       	ldi	r25, 0x13	; 19
+ 138:	01 97       	sbiw	r24, 0x01	; 1
+ 13a:	f1 f7       	brne	.-4      	; 0x138 <Lcd_init+0x4>
+ 13c:	00 c0       	rjmp	.+0      	; 0x13e <Lcd_init+0xa>
+ 13e:	00 00       	nop
+}
+void Lcd_init (){
+	_delay_ms(20);
+	//Lcd_ispusy();
+	Dir_lcd_control |= ((1<<RW_switch)|(1<<RS_switch)|(1<<E_switch));
+ 140:	8a b3       	in	r24, 0x1a	; 26
+ 142:	87 60       	ori	r24, 0x07	; 7
+ 144:	8a bb       	out	0x1a, r24	; 26
+	lcd_control &= ~((1<<RW_switch)|(1<<RS_switch)|(1<<E_switch));
+ 146:	8b b3       	in	r24, 0x1b	; 27
+ 148:	88 7f       	andi	r24, 0xF8	; 248
+ 14a:	8b bb       	out	0x1b, r24	; 27
+	Dir_lcd_port = 0xFF;
+ 14c:	8f ef       	ldi	r24, 0xFF	; 255
+ 14e:	8a bb       	out	0x1a, r24	; 26
+ 150:	85 ea       	ldi	r24, 0xA5	; 165
+ 152:	9e e0       	ldi	r25, 0x0E	; 14
+ 154:	01 97       	sbiw	r24, 0x01	; 1
+ 156:	f1 f7       	brne	.-4      	; 0x154 <Lcd_init+0x20>
+ 158:	00 c0       	rjmp	.+0      	; 0x15a <Lcd_init+0x26>
+ 15a:	00 00       	nop
+	_delay_ms(15);
+	LCD_clear_screen();
+ 15c:	0e 94 96 00 	call	0x12c	; 0x12c <LCD_clear_screen>
+	#ifdef EIGHT_BIT_MODE
+	   Send_command(LCD_FUNCTION_8BIT_2LINES);
+	#endif
+	#ifdef FOUR_BIT_MODE
+	Send_command(0x02);
+ 160:	82 e0       	ldi	r24, 0x02	; 2
+ 162:	0e 94 6f 00 	call	0xde	; 0xde <Send_command>
+	Send_command(LCD_FUNCTION_4BIT_2LINES);
+ 166:	88 e2       	ldi	r24, 0x28	; 40
+ 168:	0e 94 6f 00 	call	0xde	; 0xde <Send_command>
+    #endif
+	Send_command(LCD_ENTRY_MODE);
+ 16c:	86 e0       	ldi	r24, 0x06	; 6
+ 16e:	0e 94 6f 00 	call	0xde	; 0xde <Send_command>
+	Send_command(LCD_BEGIN_AT_FIRST_ROW);
+ 172:	80 e8       	ldi	r24, 0x80	; 128
+ 174:	0e 94 6f 00 	call	0xde	; 0xde <Send_command>
+	Send_command(LCD_DISP_ON);
+ 178:	8c e0       	ldi	r24, 0x0C	; 12
+ 17a:	0e 94 6f 00 	call	0xde	; 0xde <Send_command>
+ 17e:	08 95       	ret
+
+00000180 <LCD_WRITE_CHAR>:
+	Kick();
+	#endif
+	#ifdef FOUR_BIT_MODE
+	#endif
+}*/
+void LCD_WRITE_CHAR(unsigned char character){
+ 180:	cf 93       	push	r28
+ 182:	c8 2f       	mov	r28, r24
+	LCD_lcd_kick();
+	#endif
+	#ifdef FOUR_BIT_MODE
+	//LCD_check_lcd_isbusy();
+	//lcd_port = (lcd_port & 0x0F) | (character & 0xF0);
+	lcd_port = (lcd_port & 0x87) | ((character >>1) & 0x78);//phisical lcd
+ 184:	8b b3       	in	r24, 0x1b	; 27
+ 186:	9c 2f       	mov	r25, r28
+ 188:	96 95       	lsr	r25
+ 18a:	98 77       	andi	r25, 0x78	; 120
+ 18c:	87 78       	andi	r24, 0x87	; 135
+ 18e:	89 2b       	or	r24, r25
+ 190:	8b bb       	out	0x1b, r24	; 27
+	lcd_control |= 1<<RS_switch; //turn RS ON for Data mode.
+ 192:	8b b3       	in	r24, 0x1b	; 27
+ 194:	82 60       	ori	r24, 0x02	; 2
+ 196:	8b bb       	out	0x1b, r24	; 27
+	lcd_control &= ~ (1<<RW_switch);//turn RW off so you can write.
+ 198:	8b b3       	in	r24, 0x1b	; 27
+ 19a:	8e 7f       	andi	r24, 0xFE	; 254
+ 19c:	8b bb       	out	0x1b, r24	; 27
+	LCD_lcd_kick();
+ 19e:	0e 94 51 00 	call	0xa2	; 0xa2 <LCD_lcd_kick>
+	//lcd_port = (lcd_port & 0x0F) | (character << 4);
+	lcd_port = (lcd_port & 0x87 ) | ((character << 3) & 0x78);//phisical lcd
+ 1a2:	2b b3       	in	r18, 0x1b	; 27
+ 1a4:	8c 2f       	mov	r24, r28
+ 1a6:	90 e0       	ldi	r25, 0x00	; 0
+ 1a8:	88 0f       	add	r24, r24
+ 1aa:	99 1f       	adc	r25, r25
+ 1ac:	88 0f       	add	r24, r24
+ 1ae:	99 1f       	adc	r25, r25
+ 1b0:	88 0f       	add	r24, r24
+ 1b2:	99 1f       	adc	r25, r25
+ 1b4:	92 2f       	mov	r25, r18
+ 1b6:	97 78       	andi	r25, 0x87	; 135
+ 1b8:	88 77       	andi	r24, 0x78	; 120
+ 1ba:	89 2b       	or	r24, r25
+ 1bc:	8b bb       	out	0x1b, r24	; 27
+	lcd_control |= 1<<RS_switch; //turn RS ON for Data mode.
+ 1be:	8b b3       	in	r24, 0x1b	; 27
+ 1c0:	82 60       	ori	r24, 0x02	; 2
+ 1c2:	8b bb       	out	0x1b, r24	; 27
+	lcd_control &= ~ (1<<RW_switch);//turn RW off so you can write.
+ 1c4:	8b b3       	in	r24, 0x1b	; 27
+ 1c6:	8e 7f       	andi	r24, 0xFE	; 254
+ 1c8:	8b bb       	out	0x1b, r24	; 27
+	LCD_lcd_kick ();
+ 1ca:	0e 94 51 00 	call	0xa2	; 0xa2 <LCD_lcd_kick>
+	#endif
+}
+ 1ce:	cf 91       	pop	r28
+ 1d0:	08 95       	ret
+
+000001d2 <gotoXY>:
+void gotoXY (unsigned char line,unsigned char posetion){
+	if(line==2){
+ 1d2:	82 30       	cpi	r24, 0x02	; 2
+ 1d4:	39 f4       	brne	.+14     	; 0x1e4 <gotoXY+0x12>
+		if (posetion < 16 && posetion >= 0)
+ 1d6:	60 31       	cpi	r22, 0x10	; 16
+ 1d8:	68 f4       	brcc	.+26     	; 0x1f4 <gotoXY+0x22>
+		{
+			Send_command(LCD_BEGIN_AT_SECOND_ROW+posetion);
+ 1da:	80 ec       	ldi	r24, 0xC0	; 192
+ 1dc:	86 0f       	add	r24, r22
+ 1de:	0e 94 6f 00 	call	0xde	; 0xde <Send_command>
+ 1e2:	08 95       	ret
+		}
+		
+	}else if(line==1){
+ 1e4:	81 30       	cpi	r24, 0x01	; 1
+ 1e6:	31 f4       	brne	.+12     	; 0x1f4 <gotoXY+0x22>
+		if (posetion < 16 && posetion >= 0)
+ 1e8:	60 31       	cpi	r22, 0x10	; 16
+ 1ea:	20 f4       	brcc	.+8      	; 0x1f4 <gotoXY+0x22>
+		{
+			Send_command(LCD_BEGIN_AT_FIRST_ROW+posetion);
+ 1ec:	80 e8       	ldi	r24, 0x80	; 128
+ 1ee:	86 0f       	add	r24, r22
+ 1f0:	0e 94 6f 00 	call	0xde	; 0xde <Send_command>
+ 1f4:	08 95       	ret
+
+000001f6 <Send_string>:
+		}
+	}
+}
+void Send_string (char* data){
+ 1f6:	0f 93       	push	r16
+ 1f8:	1f 93       	push	r17
+ 1fa:	cf 93       	push	r28
+ 1fc:	df 93       	push	r29
+ 1fe:	8c 01       	movw	r16, r24
+	int count=0;
+ 200:	c0 e0       	ldi	r28, 0x00	; 0
+ 202:	d0 e0       	ldi	r29, 0x00	; 0
+	while (*data>0)
+ 204:	18 c0       	rjmp	.+48     	; 0x236 <Send_string+0x40>
+	{
+		
+		LCD_WRITE_CHAR(*data++);
+ 206:	0f 5f       	subi	r16, 0xFF	; 255
+ 208:	1f 4f       	sbci	r17, 0xFF	; 255
+ 20a:	0e 94 c0 00 	call	0x180	; 0x180 <LCD_WRITE_CHAR>
+		count++;
+ 20e:	21 96       	adiw	r28, 0x01	; 1
+		if (count==16)
+ 210:	c0 31       	cpi	r28, 0x10	; 16
+ 212:	d1 05       	cpc	r29, r1
+ 214:	29 f4       	brne	.+10     	; 0x220 <Send_string+0x2a>
+		{
+			gotoXY(2,0);
+ 216:	60 e0       	ldi	r22, 0x00	; 0
+ 218:	82 e0       	ldi	r24, 0x02	; 2
+ 21a:	0e 94 e9 00 	call	0x1d2	; 0x1d2 <gotoXY>
+ 21e:	0b c0       	rjmp	.+22     	; 0x236 <Send_string+0x40>
+	     }else if (count==32)
+ 220:	c0 32       	cpi	r28, 0x20	; 32
+ 222:	d1 05       	cpc	r29, r1
+ 224:	41 f4       	brne	.+16     	; 0x236 <Send_string+0x40>
+	    {
+		   LCD_clear_screen();
+ 226:	0e 94 96 00 	call	0x12c	; 0x12c <LCD_clear_screen>
+		   gotoXY(1,0);
+ 22a:	60 e0       	ldi	r22, 0x00	; 0
+ 22c:	81 e0       	ldi	r24, 0x01	; 1
+ 22e:	0e 94 e9 00 	call	0x1d2	; 0x1d2 <gotoXY>
+		   count = 0;
+ 232:	c0 e0       	ldi	r28, 0x00	; 0
+ 234:	d0 e0       	ldi	r29, 0x00	; 0
+		}
+	}
+}
+void Send_string (char* data){
+	int count=0;
+	while (*data>0)
+ 236:	f8 01       	movw	r30, r16
+ 238:	80 81       	ld	r24, Z
+ 23a:	81 11       	cpse	r24, r1
+ 23c:	e4 cf       	rjmp	.-56     	; 0x206 <Send_string+0x10>
+		   LCD_clear_screen();
+		   gotoXY(1,0);
+		   count = 0;
+	    }
+	}
+}
+ 23e:	df 91       	pop	r29
+ 240:	cf 91       	pop	r28
+ 242:	1f 91       	pop	r17
+ 244:	0f 91       	pop	r16
+ 246:	08 95       	ret
+
+00000248 <UART_IRQ_CallBack>:
+#include "UART.h"
+#define F_CPU  8000000U
+
+USART_Pinconfige_t UART_Con;
+uint8_t ch []="Mahmoud Eid ";
+void UART_IRQ_CallBack(void){
+ 248:	cf 93       	push	r28
+ 24a:	df 93       	push	r29
+	
+	ch[0]=(uint8_t) MCAL_UART_ReceiveData(UART_DISABLE);
+ 24c:	81 e0       	ldi	r24, 0x01	; 1
+ 24e:	0e 94 9d 02 	call	0x53a	; 0x53a <MCAL_UART_ReceiveData>
+ 252:	c0 e6       	ldi	r28, 0x60	; 96
+ 254:	d0 e0       	ldi	r29, 0x00	; 0
+ 256:	88 83       	st	Y, r24
+	MCAL_UART_SendData(&ch[0],UART_ENABLE);
+ 258:	60 e0       	ldi	r22, 0x00	; 0
+ 25a:	ce 01       	movw	r24, r28
+ 25c:	0e 94 7c 02 	call	0x4f8	; 0x4f8 <MCAL_UART_SendData>
+	LCD_WRITE_CHAR(ch[0]);
+ 260:	88 81       	ld	r24, Y
+ 262:	0e 94 c0 00 	call	0x180	; 0x180 <LCD_WRITE_CHAR>
+}
+ 266:	df 91       	pop	r29
+ 268:	cf 91       	pop	r28
+ 26a:	08 95       	ret
+
+0000026c <main>:
+
+int main(void)
+{
+	Lcd_init();
+ 26c:	0e 94 9a 00 	call	0x134	; 0x134 <Lcd_init>
+	UART_Con.DATA_SIZE=USART_8_BIT;
+ 270:	e7 e7       	ldi	r30, 0x77	; 119
+ 272:	f0 e0       	ldi	r31, 0x00	; 0
+ 274:	86 e0       	ldi	r24, 0x06	; 6
+ 276:	84 83       	std	Z+4, r24	; 0x04
+	UART_Con.Parity=USART_NON_PARITY;
+ 278:	15 82       	std	Z+5, r1	; 0x05
+	UART_Con.Select_Interrupt=RX_Complete;
+ 27a:	17 82       	std	Z+7, r1	; 0x07
+	UART_Con.STOP_MODE=USART_1_STOP_BIT;
+ 27c:	16 82       	std	Z+6, r1	; 0x06
+	UART_Con.UART_Baud_Rate=USART_BaudRate_9600_RESET_U2X;
+ 27e:	83 e3       	ldi	r24, 0x33	; 51
+ 280:	90 e0       	ldi	r25, 0x00	; 0
+ 282:	93 83       	std	Z+3, r25	; 0x03
+ 284:	82 83       	std	Z+2, r24	; 0x02
+	UART_Con.UART_MODE=UART_TX_RX;
+ 286:	88 e1       	ldi	r24, 0x18	; 24
+ 288:	80 83       	st	Z, r24
+	UART_Con.UART_TYPE=Asynchronous;
+ 28a:	11 82       	std	Z+1, r1	; 0x01
+	UART_Con.IRQ_FUNCTION_RX_Complete=UART_IRQ_CallBack;
+ 28c:	84 e2       	ldi	r24, 0x24	; 36
+ 28e:	91 e0       	ldi	r25, 0x01	; 1
+ 290:	91 87       	std	Z+9, r25	; 0x09
+ 292:	80 87       	std	Z+8, r24	; 0x08
+	UART_Con.IRQ_FUNCTION_TX_Complete=UART_IRQ_CallBack;
+ 294:	93 87       	std	Z+11, r25	; 0x0b
+ 296:	82 87       	std	Z+10, r24	; 0x0a
+	UART_Con.IRQ_FUNCTION_Register_Empty=UART_IRQ_CallBack;
+ 298:	95 87       	std	Z+13, r25	; 0x0d
+ 29a:	84 87       	std	Z+12, r24	; 0x0c
+	MCAL_UART_Init(&UART_Con);
+ 29c:	cf 01       	movw	r24, r30
+ 29e:	0e 94 1c 03 	call	0x638	; 0x638 <MCAL_UART_Init>
+	
+	
+	for (int i=0;i<strlen(ch);i++){
+ 2a2:	c0 e0       	ldi	r28, 0x00	; 0
+ 2a4:	d0 e0       	ldi	r29, 0x00	; 0
+ 2a6:	07 c0       	rjmp	.+14     	; 0x2b6 <main+0x4a>
+		MCAL_UART_SendData(&ch[i],UART_ENABLE);
+ 2a8:	60 e0       	ldi	r22, 0x00	; 0
+ 2aa:	ce 01       	movw	r24, r28
+ 2ac:	80 5a       	subi	r24, 0xA0	; 160
+ 2ae:	9f 4f       	sbci	r25, 0xFF	; 255
+ 2b0:	0e 94 7c 02 	call	0x4f8	; 0x4f8 <MCAL_UART_SendData>
+	UART_Con.IRQ_FUNCTION_TX_Complete=UART_IRQ_CallBack;
+	UART_Con.IRQ_FUNCTION_Register_Empty=UART_IRQ_CallBack;
+	MCAL_UART_Init(&UART_Con);
+	
+	
+	for (int i=0;i<strlen(ch);i++){
+ 2b4:	21 96       	adiw	r28, 0x01	; 1
+ 2b6:	e0 e6       	ldi	r30, 0x60	; 96
+ 2b8:	f0 e0       	ldi	r31, 0x00	; 0
+ 2ba:	01 90       	ld	r0, Z+
+ 2bc:	00 20       	and	r0, r0
+ 2be:	e9 f7       	brne	.-6      	; 0x2ba <main+0x4e>
+ 2c0:	31 97       	sbiw	r30, 0x01	; 1
+ 2c2:	e0 56       	subi	r30, 0x60	; 96
+ 2c4:	f0 40       	sbci	r31, 0x00	; 0
+ 2c6:	ce 17       	cp	r28, r30
+ 2c8:	df 07       	cpc	r29, r31
+ 2ca:	70 f3       	brcs	.-36     	; 0x2a8 <main+0x3c>
+		MCAL_UART_SendData(&ch[i],UART_ENABLE);
+	}
+	Send_string(ch);
+ 2cc:	80 e6       	ldi	r24, 0x60	; 96
+ 2ce:	90 e0       	ldi	r25, 0x00	; 0
+ 2d0:	0e 94 fb 00 	call	0x1f6	; 0x1f6 <Send_string>
+ 2d4:	ff cf       	rjmp	.-2      	; 0x2d4 <main+0x68>
+
+000002d6 <__vector_1>:
+	
+	EXTI_config[index].EXTI_Function();
+	
+}*/
+void  __vector_1 (void) __attribute__((signal));
+void __vector_1 (void){
+ 2d6:	1f 92       	push	r1
+ 2d8:	0f 92       	push	r0
+ 2da:	0f b6       	in	r0, 0x3f	; 63
+ 2dc:	0f 92       	push	r0
+ 2de:	11 24       	eor	r1, r1
+ 2e0:	2f 93       	push	r18
+ 2e2:	3f 93       	push	r19
+ 2e4:	4f 93       	push	r20
+ 2e6:	5f 93       	push	r21
+ 2e8:	6f 93       	push	r22
+ 2ea:	7f 93       	push	r23
+ 2ec:	8f 93       	push	r24
+ 2ee:	9f 93       	push	r25
+ 2f0:	af 93       	push	r26
+ 2f2:	bf 93       	push	r27
+ 2f4:	ef 93       	push	r30
+ 2f6:	ff 93       	push	r31
+	EXTI_config[(uint8_t)0].EXTI_Function();
+ 2f8:	e0 91 87 00 	lds	r30, 0x0087	; 0x800087 <EXTI_config+0x2>
+ 2fc:	f0 91 88 00 	lds	r31, 0x0088	; 0x800088 <EXTI_config+0x3>
+ 300:	09 95       	icall
+}
+ 302:	ff 91       	pop	r31
+ 304:	ef 91       	pop	r30
+ 306:	bf 91       	pop	r27
+ 308:	af 91       	pop	r26
+ 30a:	9f 91       	pop	r25
+ 30c:	8f 91       	pop	r24
+ 30e:	7f 91       	pop	r23
+ 310:	6f 91       	pop	r22
+ 312:	5f 91       	pop	r21
+ 314:	4f 91       	pop	r20
+ 316:	3f 91       	pop	r19
+ 318:	2f 91       	pop	r18
+ 31a:	0f 90       	pop	r0
+ 31c:	0f be       	out	0x3f, r0	; 63
+ 31e:	0f 90       	pop	r0
+ 320:	1f 90       	pop	r1
+ 322:	18 95       	reti
+
+00000324 <__vector_2>:
+
+void  __vector_2 (void) __attribute__((signal));
+void __vector_2 (void){
+ 324:	1f 92       	push	r1
+ 326:	0f 92       	push	r0
+ 328:	0f b6       	in	r0, 0x3f	; 63
+ 32a:	0f 92       	push	r0
+ 32c:	11 24       	eor	r1, r1
+ 32e:	2f 93       	push	r18
+ 330:	3f 93       	push	r19
+ 332:	4f 93       	push	r20
+ 334:	5f 93       	push	r21
+ 336:	6f 93       	push	r22
+ 338:	7f 93       	push	r23
+ 33a:	8f 93       	push	r24
+ 33c:	9f 93       	push	r25
+ 33e:	af 93       	push	r26
+ 340:	bf 93       	push	r27
+ 342:	ef 93       	push	r30
+ 344:	ff 93       	push	r31
+	EXTI_config[(uint8_t)1].EXTI_Function();
+ 346:	e0 91 8b 00 	lds	r30, 0x008B	; 0x80008b <EXTI_config+0x6>
+ 34a:	f0 91 8c 00 	lds	r31, 0x008C	; 0x80008c <EXTI_config+0x7>
+ 34e:	09 95       	icall
+}
+ 350:	ff 91       	pop	r31
+ 352:	ef 91       	pop	r30
+ 354:	bf 91       	pop	r27
+ 356:	af 91       	pop	r26
+ 358:	9f 91       	pop	r25
+ 35a:	8f 91       	pop	r24
+ 35c:	7f 91       	pop	r23
+ 35e:	6f 91       	pop	r22
+ 360:	5f 91       	pop	r21
+ 362:	4f 91       	pop	r20
+ 364:	3f 91       	pop	r19
+ 366:	2f 91       	pop	r18
+ 368:	0f 90       	pop	r0
+ 36a:	0f be       	out	0x3f, r0	; 63
+ 36c:	0f 90       	pop	r0
+ 36e:	1f 90       	pop	r1
+ 370:	18 95       	reti
+
+00000372 <__vector_3>:
+
+void  __vector_3 (void) __attribute__((signal));
+void __vector_3 (void){
+ 372:	1f 92       	push	r1
+ 374:	0f 92       	push	r0
+ 376:	0f b6       	in	r0, 0x3f	; 63
+ 378:	0f 92       	push	r0
+ 37a:	11 24       	eor	r1, r1
+ 37c:	2f 93       	push	r18
+ 37e:	3f 93       	push	r19
+ 380:	4f 93       	push	r20
+ 382:	5f 93       	push	r21
+ 384:	6f 93       	push	r22
+ 386:	7f 93       	push	r23
+ 388:	8f 93       	push	r24
+ 38a:	9f 93       	push	r25
+ 38c:	af 93       	push	r26
+ 38e:	bf 93       	push	r27
+ 390:	ef 93       	push	r30
+ 392:	ff 93       	push	r31
+	EXTI_config[(uint8_t)2].EXTI_Function();
+ 394:	e0 91 8f 00 	lds	r30, 0x008F	; 0x80008f <EXTI_config+0xa>
+ 398:	f0 91 90 00 	lds	r31, 0x0090	; 0x800090 <EXTI_config+0xb>
+ 39c:	09 95       	icall
+}
+ 39e:	ff 91       	pop	r31
+ 3a0:	ef 91       	pop	r30
+ 3a2:	bf 91       	pop	r27
+ 3a4:	af 91       	pop	r26
+ 3a6:	9f 91       	pop	r25
+ 3a8:	8f 91       	pop	r24
+ 3aa:	7f 91       	pop	r23
+ 3ac:	6f 91       	pop	r22
+ 3ae:	5f 91       	pop	r21
+ 3b0:	4f 91       	pop	r20
+ 3b2:	3f 91       	pop	r19
+ 3b4:	2f 91       	pop	r18
+ 3b6:	0f 90       	pop	r0
+ 3b8:	0f be       	out	0x3f, r0	; 63
+ 3ba:	0f 90       	pop	r0
+ 3bc:	1f 90       	pop	r1
+ 3be:	18 95       	reti
+
+000003c0 <__vector_10>:
+//****************************************************************
+
+
+//Timer/Counter0 Compare Match
+void  __vector_10 (void) __attribute__((signal));
+void __vector_10 (void){
+ 3c0:	1f 92       	push	r1
+ 3c2:	0f 92       	push	r0
+ 3c4:	0f b6       	in	r0, 0x3f	; 63
+ 3c6:	0f 92       	push	r0
+ 3c8:	11 24       	eor	r1, r1
+ 3ca:	2f 93       	push	r18
+ 3cc:	3f 93       	push	r19
+ 3ce:	4f 93       	push	r20
+ 3d0:	5f 93       	push	r21
+ 3d2:	6f 93       	push	r22
+ 3d4:	7f 93       	push	r23
+ 3d6:	8f 93       	push	r24
+ 3d8:	9f 93       	push	r25
+ 3da:	af 93       	push	r26
+ 3dc:	bf 93       	push	r27
+ 3de:	ef 93       	push	r30
+ 3e0:	ff 93       	push	r31
+	Time_con[0].Timer_Call_Back_Compare();
+ 3e2:	e0 91 97 00 	lds	r30, 0x0097	; 0x800097 <Time_con+0x6>
+ 3e6:	f0 91 98 00 	lds	r31, 0x0098	; 0x800098 <Time_con+0x7>
+ 3ea:	09 95       	icall
+}
+ 3ec:	ff 91       	pop	r31
+ 3ee:	ef 91       	pop	r30
+ 3f0:	bf 91       	pop	r27
+ 3f2:	af 91       	pop	r26
+ 3f4:	9f 91       	pop	r25
+ 3f6:	8f 91       	pop	r24
+ 3f8:	7f 91       	pop	r23
+ 3fa:	6f 91       	pop	r22
+ 3fc:	5f 91       	pop	r21
+ 3fe:	4f 91       	pop	r20
+ 400:	3f 91       	pop	r19
+ 402:	2f 91       	pop	r18
+ 404:	0f 90       	pop	r0
+ 406:	0f be       	out	0x3f, r0	; 63
+ 408:	0f 90       	pop	r0
+ 40a:	1f 90       	pop	r1
+ 40c:	18 95       	reti
+
+0000040e <__vector_11>:
+
+
+//Timer/Counter0 Overflow
+void  __vector_11 (void) __attribute__((signal));
+void __vector_11 (void){
+ 40e:	1f 92       	push	r1
+ 410:	0f 92       	push	r0
+ 412:	0f b6       	in	r0, 0x3f	; 63
+ 414:	0f 92       	push	r0
+ 416:	11 24       	eor	r1, r1
+ 418:	2f 93       	push	r18
+ 41a:	3f 93       	push	r19
+ 41c:	4f 93       	push	r20
+ 41e:	5f 93       	push	r21
+ 420:	6f 93       	push	r22
+ 422:	7f 93       	push	r23
+ 424:	8f 93       	push	r24
+ 426:	9f 93       	push	r25
+ 428:	af 93       	push	r26
+ 42a:	bf 93       	push	r27
+ 42c:	ef 93       	push	r30
+ 42e:	ff 93       	push	r31
+	Time_con[0].Timer_Call_Back_overflow();
+ 430:	e0 91 99 00 	lds	r30, 0x0099	; 0x800099 <Time_con+0x8>
+ 434:	f0 91 9a 00 	lds	r31, 0x009A	; 0x80009a <Time_con+0x9>
+ 438:	09 95       	icall
+}
+ 43a:	ff 91       	pop	r31
+ 43c:	ef 91       	pop	r30
+ 43e:	bf 91       	pop	r27
+ 440:	af 91       	pop	r26
+ 442:	9f 91       	pop	r25
+ 444:	8f 91       	pop	r24
+ 446:	7f 91       	pop	r23
+ 448:	6f 91       	pop	r22
+ 44a:	5f 91       	pop	r21
+ 44c:	4f 91       	pop	r20
+ 44e:	3f 91       	pop	r19
+ 450:	2f 91       	pop	r18
+ 452:	0f 90       	pop	r0
+ 454:	0f be       	out	0x3f, r0	; 63
+ 456:	0f 90       	pop	r0
+ 458:	1f 90       	pop	r1
+ 45a:	18 95       	reti
+
+0000045c <__vector_4>:
+
+
+//Timer/Counter2 Compare Match
+void  __vector_4 (void) __attribute__((signal));
+void __vector_4 (void){
+ 45c:	1f 92       	push	r1
+ 45e:	0f 92       	push	r0
+ 460:	0f b6       	in	r0, 0x3f	; 63
+ 462:	0f 92       	push	r0
+ 464:	11 24       	eor	r1, r1
+ 466:	2f 93       	push	r18
+ 468:	3f 93       	push	r19
+ 46a:	4f 93       	push	r20
+ 46c:	5f 93       	push	r21
+ 46e:	6f 93       	push	r22
+ 470:	7f 93       	push	r23
+ 472:	8f 93       	push	r24
+ 474:	9f 93       	push	r25
+ 476:	af 93       	push	r26
+ 478:	bf 93       	push	r27
+ 47a:	ef 93       	push	r30
+ 47c:	ff 93       	push	r31
+	Time_con[2].Timer_Call_Back_Compare();
+ 47e:	e0 91 ab 00 	lds	r30, 0x00AB	; 0x8000ab <Time_con+0x1a>
+ 482:	f0 91 ac 00 	lds	r31, 0x00AC	; 0x8000ac <Time_con+0x1b>
+ 486:	09 95       	icall
+}
+ 488:	ff 91       	pop	r31
+ 48a:	ef 91       	pop	r30
+ 48c:	bf 91       	pop	r27
+ 48e:	af 91       	pop	r26
+ 490:	9f 91       	pop	r25
+ 492:	8f 91       	pop	r24
+ 494:	7f 91       	pop	r23
+ 496:	6f 91       	pop	r22
+ 498:	5f 91       	pop	r21
+ 49a:	4f 91       	pop	r20
+ 49c:	3f 91       	pop	r19
+ 49e:	2f 91       	pop	r18
+ 4a0:	0f 90       	pop	r0
+ 4a2:	0f be       	out	0x3f, r0	; 63
+ 4a4:	0f 90       	pop	r0
+ 4a6:	1f 90       	pop	r1
+ 4a8:	18 95       	reti
+
+000004aa <__vector_5>:
+
+
+//Timer/Counter2 Overflow
+void  __vector_5 (void) __attribute__((signal));
+void __vector_5 (void){
+ 4aa:	1f 92       	push	r1
+ 4ac:	0f 92       	push	r0
+ 4ae:	0f b6       	in	r0, 0x3f	; 63
+ 4b0:	0f 92       	push	r0
+ 4b2:	11 24       	eor	r1, r1
+ 4b4:	2f 93       	push	r18
+ 4b6:	3f 93       	push	r19
+ 4b8:	4f 93       	push	r20
+ 4ba:	5f 93       	push	r21
+ 4bc:	6f 93       	push	r22
+ 4be:	7f 93       	push	r23
+ 4c0:	8f 93       	push	r24
+ 4c2:	9f 93       	push	r25
+ 4c4:	af 93       	push	r26
+ 4c6:	bf 93       	push	r27
+ 4c8:	ef 93       	push	r30
+ 4ca:	ff 93       	push	r31
+	Time_con[2].Timer_Call_Back_overflow();
+ 4cc:	e0 91 ad 00 	lds	r30, 0x00AD	; 0x8000ad <Time_con+0x1c>
+ 4d0:	f0 91 ae 00 	lds	r31, 0x00AE	; 0x8000ae <Time_con+0x1d>
+ 4d4:	09 95       	icall
+}
+ 4d6:	ff 91       	pop	r31
+ 4d8:	ef 91       	pop	r30
+ 4da:	bf 91       	pop	r27
+ 4dc:	af 91       	pop	r26
+ 4de:	9f 91       	pop	r25
+ 4e0:	8f 91       	pop	r24
+ 4e2:	7f 91       	pop	r23
+ 4e4:	6f 91       	pop	r22
+ 4e6:	5f 91       	pop	r21
+ 4e8:	4f 91       	pop	r20
+ 4ea:	3f 91       	pop	r19
+ 4ec:	2f 91       	pop	r18
+ 4ee:	0f 90       	pop	r0
+ 4f0:	0f be       	out	0x3f, r0	; 63
+ 4f2:	0f 90       	pop	r0
+ 4f4:	1f 90       	pop	r1
+ 4f6:	18 95       	reti
+
+000004f8 <MCAL_UART_SendData>:
+	
+	return Local_enuErrorState;
+}
+_errorID MCAL_UART_WAIT_TC(){
+	
+}
+ 4f8:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <__data_end+0x1>
+ 4fc:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__data_end>
+ 500:	61 11       	cpse	r22, r1
+ 502:	02 c0       	rjmp	.+4      	; 0x508 <MCAL_UART_SendData+0x10>
+ 504:	5d 9b       	sbis	0x0b, 5	; 11
+ 506:	fe cf       	rjmp	.-4      	; 0x504 <MCAL_UART_SendData+0xc>
+ 508:	20 91 b3 00 	lds	r18, 0x00B3	; 0x8000b3 <UART_config+0x4>
+ 50c:	2e 30       	cpi	r18, 0x0E	; 14
+ 50e:	21 f0       	breq	.+8      	; 0x518 <MCAL_UART_SendData+0x20>
+ 510:	fc 01       	movw	r30, r24
+ 512:	80 81       	ld	r24, Z
+ 514:	8c b9       	out	0x0c, r24	; 12
+ 516:	0f c0       	rjmp	.+30     	; 0x536 <MCAL_UART_SendData+0x3e>
+ 518:	fc 01       	movw	r30, r24
+ 51a:	20 81       	ld	r18, Z
+ 51c:	31 81       	ldd	r19, Z+1	; 0x01
+ 51e:	30 ff       	sbrs	r19, 0
+ 520:	04 c0       	rjmp	.+8      	; 0x52a <MCAL_UART_SendData+0x32>
+ 522:	2a b1       	in	r18, 0x0a	; 10
+ 524:	21 60       	ori	r18, 0x01	; 1
+ 526:	2a b9       	out	0x0a, r18	; 10
+ 528:	03 c0       	rjmp	.+6      	; 0x530 <MCAL_UART_SendData+0x38>
+ 52a:	2a b1       	in	r18, 0x0a	; 10
+ 52c:	2e 7f       	andi	r18, 0xFE	; 254
+ 52e:	2a b9       	out	0x0a, r18	; 10
+ 530:	fc 01       	movw	r30, r24
+ 532:	80 81       	ld	r24, Z
+ 534:	8c b9       	out	0x0c, r24	; 12
+ 536:	80 e0       	ldi	r24, 0x00	; 0
+ 538:	08 95       	ret
+
+0000053a <MCAL_UART_ReceiveData>:
+ 53a:	81 11       	cpse	r24, r1
+ 53c:	02 c0       	rjmp	.+4      	; 0x542 <MCAL_UART_ReceiveData+0x8>
+ 53e:	5f 9b       	sbis	0x0b, 7	; 11
+ 540:	fe cf       	rjmp	.-4      	; 0x53e <MCAL_UART_ReceiveData+0x4>
+ 542:	80 91 b3 00 	lds	r24, 0x00B3	; 0x8000b3 <UART_config+0x4>
+ 546:	8e 30       	cpi	r24, 0x0E	; 14
+ 548:	19 f0       	breq	.+6      	; 0x550 <MCAL_UART_ReceiveData+0x16>
+ 54a:	8c b1       	in	r24, 0x0c	; 12
+ 54c:	90 e0       	ldi	r25, 0x00	; 0
+ 54e:	08 95       	ret
+ 550:	8b b1       	in	r24, 0x0b	; 11
+ 552:	8a b1       	in	r24, 0x0a	; 10
+ 554:	8c b1       	in	r24, 0x0c	; 12
+ 556:	8f ef       	ldi	r24, 0xFF	; 255
+ 558:	9f ef       	ldi	r25, 0xFF	; 255
+ 55a:	08 95       	ret
+
+0000055c <Get_Select_Interrupt>:
+
+void Get_Select_Interrupt(eslect_interrupt Select){
+	
+	switch(Select){
+ 55c:	90 e0       	ldi	r25, 0x00	; 0
+ 55e:	88 30       	cpi	r24, 0x08	; 8
+ 560:	91 05       	cpc	r25, r1
+ 562:	08 f0       	brcs	.+2      	; 0x566 <Get_Select_Interrupt+0xa>
+ 564:	68 c0       	rjmp	.+208    	; 0x636 <Get_Select_Interrupt+0xda>
+ 566:	fc 01       	movw	r30, r24
+ 568:	e6 5d       	subi	r30, 0xD6	; 214
+ 56a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 56c:	0c 94 e2 03 	jmp	0x7c4	; 0x7c4 <__tablejump2__>
+		case RX_Complete:
+		    //• Bit 7 – INT1: External Interrupt Request 1 Enable
+		    *SREG|=(1<<7);
+ 570:	8f b7       	in	r24, 0x3f	; 63
+ 572:	80 68       	ori	r24, 0x80	; 128
+ 574:	8f bf       	out	0x3f, r24	; 63
+		     RX_Complete_Interrupt_Enable;
+ 576:	8a b1       	in	r24, 0x0a	; 10
+ 578:	80 68       	ori	r24, 0x80	; 128
+ 57a:	8a b9       	out	0x0a, r24	; 10
+			 TX_Complete_Interrupt_Disable;
+ 57c:	8a b1       	in	r24, 0x0a	; 10
+ 57e:	8f 7b       	andi	r24, 0xBF	; 191
+ 580:	8a b9       	out	0x0a, r24	; 10
+			 Register_Empty_Interrupt_Disable;
+ 582:	8a b1       	in	r24, 0x0a	; 10
+ 584:	8f 7d       	andi	r24, 0xDF	; 223
+ 586:	8a b9       	out	0x0a, r24	; 10
+		     break;
+ 588:	08 95       	ret
+		case TX_Complete:
+		    //• Bit 7 – INT1: External Interrupt Request 1 Enable
+		    *SREG|=(1<<7);
+ 58a:	8f b7       	in	r24, 0x3f	; 63
+ 58c:	80 68       	ori	r24, 0x80	; 128
+ 58e:	8f bf       	out	0x3f, r24	; 63
+		     TX_Complete_Interrupt_Enable;
+ 590:	8a b1       	in	r24, 0x0a	; 10
+ 592:	80 64       	ori	r24, 0x40	; 64
+ 594:	8a b9       	out	0x0a, r24	; 10
+			 RX_Complete_Interrupt_Disable;
+ 596:	8a b1       	in	r24, 0x0a	; 10
+ 598:	8f 77       	andi	r24, 0x7F	; 127
+ 59a:	8a b9       	out	0x0a, r24	; 10
+			 Register_Empty_Interrupt_Disable;
+ 59c:	8a b1       	in	r24, 0x0a	; 10
+ 59e:	8f 7d       	andi	r24, 0xDF	; 223
+ 5a0:	8a b9       	out	0x0a, r24	; 10
+			 break;
+ 5a2:	08 95       	ret
+		case Register_Empty:
+		    //• Bit 7 – INT1: External Interrupt Request 1 Enable
+		    *SREG|=(1<<7);
+ 5a4:	8f b7       	in	r24, 0x3f	; 63
+ 5a6:	80 68       	ori	r24, 0x80	; 128
+ 5a8:	8f bf       	out	0x3f, r24	; 63
+			RX_Complete_Interrupt_Disable;
+ 5aa:	8a b1       	in	r24, 0x0a	; 10
+ 5ac:	8f 77       	andi	r24, 0x7F	; 127
+ 5ae:	8a b9       	out	0x0a, r24	; 10
+		    TX_Complete_Interrupt_Disable;
+ 5b0:	8a b1       	in	r24, 0x0a	; 10
+ 5b2:	8f 7b       	andi	r24, 0xBF	; 191
+ 5b4:	8a b9       	out	0x0a, r24	; 10
+		    Register_Empty_Interrupt_Enable;
+ 5b6:	8a b1       	in	r24, 0x0a	; 10
+ 5b8:	80 62       	ori	r24, 0x20	; 32
+ 5ba:	8a b9       	out	0x0a, r24	; 10
+		case RX_Complete_TX_Complete:
+		     //• Bit 7 – INT1: External Interrupt Request 1 Enable
+		     *SREG|=(1<<7);
+ 5bc:	8f b7       	in	r24, 0x3f	; 63
+ 5be:	80 68       	ori	r24, 0x80	; 128
+ 5c0:	8f bf       	out	0x3f, r24	; 63
+			 RX_Complete_Interrupt_Enable;
+ 5c2:	8a b1       	in	r24, 0x0a	; 10
+ 5c4:	80 68       	ori	r24, 0x80	; 128
+ 5c6:	8a b9       	out	0x0a, r24	; 10
+		    TX_Complete_Interrupt_Enable;
+ 5c8:	8a b1       	in	r24, 0x0a	; 10
+ 5ca:	80 64       	ori	r24, 0x40	; 64
+ 5cc:	8a b9       	out	0x0a, r24	; 10
+			Register_Empty_Interrupt_Disable;
+ 5ce:	8a b1       	in	r24, 0x0a	; 10
+ 5d0:	8f 7d       	andi	r24, 0xDF	; 223
+ 5d2:	8a b9       	out	0x0a, r24	; 10
+			break;
+ 5d4:	08 95       	ret
+		case RX_Complete_Register_Empty:
+		    //• Bit 7 – INT1: External Interrupt Request 1 Enable
+		    *SREG|=(1<<7); 
+ 5d6:	8f b7       	in	r24, 0x3f	; 63
+ 5d8:	80 68       	ori	r24, 0x80	; 128
+ 5da:	8f bf       	out	0x3f, r24	; 63
+			 RX_Complete_Interrupt_Enable;
+ 5dc:	8a b1       	in	r24, 0x0a	; 10
+ 5de:	80 68       	ori	r24, 0x80	; 128
+ 5e0:	8a b9       	out	0x0a, r24	; 10
+			 Register_Empty_Interrupt_Enable;
+ 5e2:	8a b1       	in	r24, 0x0a	; 10
+ 5e4:	80 62       	ori	r24, 0x20	; 32
+ 5e6:	8a b9       	out	0x0a, r24	; 10
+			 TX_Complete_Interrupt_Disable;
+ 5e8:	8a b1       	in	r24, 0x0a	; 10
+ 5ea:	8f 7b       	andi	r24, 0xBF	; 191
+ 5ec:	8a b9       	out	0x0a, r24	; 10
+			 break;
+ 5ee:	08 95       	ret
+		case TX_Complete_Register_Empty:
+		     //• Bit 7 – INT1: External Interrupt Request 1 Enable
+		     *SREG|=(1<<7);
+ 5f0:	8f b7       	in	r24, 0x3f	; 63
+ 5f2:	80 68       	ori	r24, 0x80	; 128
+ 5f4:	8f bf       	out	0x3f, r24	; 63
+			 TX_Complete_Interrupt_Enable;
+ 5f6:	8a b1       	in	r24, 0x0a	; 10
+ 5f8:	80 64       	ori	r24, 0x40	; 64
+ 5fa:	8a b9       	out	0x0a, r24	; 10
+			 Register_Empty_Interrupt_Enable;
+ 5fc:	8a b1       	in	r24, 0x0a	; 10
+ 5fe:	80 62       	ori	r24, 0x20	; 32
+ 600:	8a b9       	out	0x0a, r24	; 10
+			 RX_Complete_Interrupt_Disable;
+ 602:	8a b1       	in	r24, 0x0a	; 10
+ 604:	8f 77       	andi	r24, 0x7F	; 127
+ 606:	8a b9       	out	0x0a, r24	; 10
+			 break;
+ 608:	08 95       	ret
+		case RX_Complete_TX_Complete_Register_Empty:
+		     //• Bit 7 – INT1: External Interrupt Request 1 Enable
+		     *SREG|=(1<<7);
+ 60a:	8f b7       	in	r24, 0x3f	; 63
+ 60c:	80 68       	ori	r24, 0x80	; 128
+ 60e:	8f bf       	out	0x3f, r24	; 63
+			 RX_Complete_Interrupt_Enable;
+ 610:	8a b1       	in	r24, 0x0a	; 10
+ 612:	80 68       	ori	r24, 0x80	; 128
+ 614:	8a b9       	out	0x0a, r24	; 10
+		     TX_Complete_Interrupt_Enable;
+ 616:	8a b1       	in	r24, 0x0a	; 10
+ 618:	80 64       	ori	r24, 0x40	; 64
+ 61a:	8a b9       	out	0x0a, r24	; 10
+		     Register_Empty_Interrupt_Enable;
+ 61c:	8a b1       	in	r24, 0x0a	; 10
+ 61e:	80 62       	ori	r24, 0x20	; 32
+ 620:	8a b9       	out	0x0a, r24	; 10
+			 break;
+ 622:	08 95       	ret
+		case DIS_RX_Complete_TX_Complete_Register_Empty:
+		     RX_Complete_Interrupt_Disable;
+ 624:	8a b1       	in	r24, 0x0a	; 10
+ 626:	8f 77       	andi	r24, 0x7F	; 127
+ 628:	8a b9       	out	0x0a, r24	; 10
+			 TX_Complete_Interrupt_Disable;
+ 62a:	8a b1       	in	r24, 0x0a	; 10
+ 62c:	8f 7b       	andi	r24, 0xBF	; 191
+ 62e:	8a b9       	out	0x0a, r24	; 10
+			 Register_Empty_Interrupt_Disable;
+ 630:	8a b1       	in	r24, 0x0a	; 10
+ 632:	8f 7d       	andi	r24, 0xDF	; 223
+ 634:	8a b9       	out	0x0a, r24	; 10
+ 636:	08 95       	ret
+
+00000638 <MCAL_UART_Init>:
+
+USART_Pinconfige_t UART_config;
+uint16_t data;
+void Get_Select_Interrupt(eslect_interrupt Select);
+
+_errorID MCAL_UART_Init(USART_Pinconfige_t* USART_conf){
+ 638:	cf 93       	push	r28
+ 63a:	df 93       	push	r29
+ 63c:	fc 01       	movw	r30, r24
+	_errorID Local_enuErrorState=ES_NoError;
+	UART_config=*USART_conf;
+ 63e:	9e e0       	ldi	r25, 0x0E	; 14
+ 640:	af ea       	ldi	r26, 0xAF	; 175
+ 642:	b0 e0       	ldi	r27, 0x00	; 0
+ 644:	01 90       	ld	r0, Z+
+ 646:	0d 92       	st	X+, r0
+ 648:	9a 95       	dec	r25
+ 64a:	e1 f7       	brne	.-8      	; 0x644 <MCAL_UART_Init+0xc>
+	
+	
+	
+	//Set  Baud Rate
+	*UBRRH &=~(1<<7);////UBRRH==>UBRRH
+ 64c:	80 b5       	in	r24, 0x20	; 32
+ 64e:	8f 77       	andi	r24, 0x7F	; 127
+ 650:	80 bd       	out	0x20, r24	; 32
+	//select working no UCSRC
+	*UBRRH=(uint8_t)(UART_config.UART_Baud_Rate>>8);
+ 652:	ef ea       	ldi	r30, 0xAF	; 175
+ 654:	f0 e0       	ldi	r31, 0x00	; 0
+ 656:	83 81       	ldd	r24, Z+3	; 0x03
+ 658:	80 bd       	out	0x20, r24	; 32
+	*UBRRL=(uint8_t)UART_config.UART_Baud_Rate;
+ 65a:	82 81       	ldd	r24, Z+2	; 0x02
+ 65c:	89 b9       	out	0x09, r24	; 9
+	
+	//RESET U2x 
+	*UCSRA&=~(1<<1);
+ 65e:	8b b1       	in	r24, 0x0b	; 11
+ 660:	8d 7f       	andi	r24, 0xFD	; 253
+ 662:	8b b9       	out	0x0b, r24	; 11
+	/*
+		• Bit 7 – URSEL: Register Select
+		This bit selects between accessing the UCSRC or the UBRRH Register. It is read as one when
+		reading UCSRC. The URSEL must be one when writing the UCSRC.
+    */
+	*UBRRH |=(1<<7);
+ 664:	80 b5       	in	r24, 0x20	; 32
+ 666:	80 68       	ori	r24, 0x80	; 128
+ 668:	80 bd       	out	0x20, r24	; 32
+	if (UART_config.DATA_SIZE==USART_9_BIT)
+ 66a:	94 81       	ldd	r25, Z+4	; 0x04
+ 66c:	9e 30       	cpi	r25, 0x0E	; 14
+ 66e:	39 f4       	brne	.+14     	; 0x67e <MCAL_UART_Init+0x46>
+	{
+		//Set Fram 9 BIT
+		
+		
+		//UBRRH==>UCSRC
+		*UBRRH|=(uint8_t)USART_8_BIT;//??? ??? ??? 4 ?? ?? ????????? ?? ??? ???? ?? ?????? ???? 
+ 670:	80 b5       	in	r24, 0x20	; 32
+ 672:	86 60       	ori	r24, 0x06	; 6
+ 674:	80 bd       	out	0x20, r24	; 32
+		*UCSRB|=(1<<2);	
+ 676:	8a b1       	in	r24, 0x0a	; 10
+ 678:	84 60       	ori	r24, 0x04	; 4
+ 67a:	8a b9       	out	0x0a, r24	; 10
+ 67c:	06 c0       	rjmp	.+12     	; 0x68a <MCAL_UART_Init+0x52>
+	} 
+	else
+	{
+		
+		*UBRRH |=(uint8_t)UART_config.DATA_SIZE;
+ 67e:	80 b5       	in	r24, 0x20	; 32
+ 680:	89 2b       	or	r24, r25
+ 682:	80 bd       	out	0x20, r24	; 32
+		*UCSRB&=~(1<<2);	
+ 684:	8a b1       	in	r24, 0x0a	; 10
+ 686:	8b 7f       	andi	r24, 0xFB	; 251
+ 688:	8a b9       	out	0x0a, r24	; 10
+	}
+	//Set Type
+	*UBRRH |=UART_config.UART_TYPE;
+ 68a:	90 b5       	in	r25, 0x20	; 32
+ 68c:	cf ea       	ldi	r28, 0xAF	; 175
+ 68e:	d0 e0       	ldi	r29, 0x00	; 0
+ 690:	89 81       	ldd	r24, Y+1	; 0x01
+ 692:	89 2b       	or	r24, r25
+ 694:	80 bd       	out	0x20, r24	; 32
+	//Set Parity
+	*UBRRH |=UART_config.Parity;
+ 696:	90 b5       	in	r25, 0x20	; 32
+ 698:	8d 81       	ldd	r24, Y+5	; 0x05
+ 69a:	89 2b       	or	r24, r25
+ 69c:	80 bd       	out	0x20, r24	; 32
+	//Set Stop
+	*UBRRH |=UART_config.STOP_MODE;
+ 69e:	90 b5       	in	r25, 0x20	; 32
+ 6a0:	8e 81       	ldd	r24, Y+6	; 0x06
+ 6a2:	89 2b       	or	r24, r25
+ 6a4:	80 bd       	out	0x20, r24	; 32
+	
+	//Set_UART_Interrupt
+	Get_Select_Interrupt(UART_config.Select_Interrupt);
+ 6a6:	8f 81       	ldd	r24, Y+7	; 0x07
+ 6a8:	0e 94 ae 02 	call	0x55c	; 0x55c <Get_Select_Interrupt>
+	
+	//Enable TX RX
+	*UCSRB|=UART_config.UART_MODE;
+ 6ac:	9a b1       	in	r25, 0x0a	; 10
+ 6ae:	88 81       	ld	r24, Y
+ 6b0:	89 2b       	or	r24, r25
+ 6b2:	8a b9       	out	0x0a, r24	; 10
+	
+	return Local_enuErrorState;
+}
+ 6b4:	80 e0       	ldi	r24, 0x00	; 0
+ 6b6:	df 91       	pop	r29
+ 6b8:	cf 91       	pop	r28
+ 6ba:	08 95       	ret
+
+000006bc <__vector_13>:
+}
+
+
+
+void  __vector_13 (void) __attribute__((signal));
+void __vector_13 (void){
+ 6bc:	1f 92       	push	r1
+ 6be:	0f 92       	push	r0
+ 6c0:	0f b6       	in	r0, 0x3f	; 63
+ 6c2:	0f 92       	push	r0
+ 6c4:	11 24       	eor	r1, r1
+ 6c6:	2f 93       	push	r18
+ 6c8:	3f 93       	push	r19
+ 6ca:	4f 93       	push	r20
+ 6cc:	5f 93       	push	r21
+ 6ce:	6f 93       	push	r22
+ 6d0:	7f 93       	push	r23
+ 6d2:	8f 93       	push	r24
+ 6d4:	9f 93       	push	r25
+ 6d6:	af 93       	push	r26
+ 6d8:	bf 93       	push	r27
+ 6da:	ef 93       	push	r30
+ 6dc:	ff 93       	push	r31
+	
+	
+	UART_config.IRQ_FUNCTION_RX_Complete();
+ 6de:	e0 91 b7 00 	lds	r30, 0x00B7	; 0x8000b7 <UART_config+0x8>
+ 6e2:	f0 91 b8 00 	lds	r31, 0x00B8	; 0x8000b8 <UART_config+0x9>
+ 6e6:	09 95       	icall
+	
+}
+ 6e8:	ff 91       	pop	r31
+ 6ea:	ef 91       	pop	r30
+ 6ec:	bf 91       	pop	r27
+ 6ee:	af 91       	pop	r26
+ 6f0:	9f 91       	pop	r25
+ 6f2:	8f 91       	pop	r24
+ 6f4:	7f 91       	pop	r23
+ 6f6:	6f 91       	pop	r22
+ 6f8:	5f 91       	pop	r21
+ 6fa:	4f 91       	pop	r20
+ 6fc:	3f 91       	pop	r19
+ 6fe:	2f 91       	pop	r18
+ 700:	0f 90       	pop	r0
+ 702:	0f be       	out	0x3f, r0	; 63
+ 704:	0f 90       	pop	r0
+ 706:	1f 90       	pop	r1
+ 708:	18 95       	reti
+
+0000070a <__vector_14>:
+
+void  __vector_14 (void) __attribute__((signal));
+void __vector_14 (void){
+ 70a:	1f 92       	push	r1
+ 70c:	0f 92       	push	r0
+ 70e:	0f b6       	in	r0, 0x3f	; 63
+ 710:	0f 92       	push	r0
+ 712:	11 24       	eor	r1, r1
+ 714:	2f 93       	push	r18
+ 716:	3f 93       	push	r19
+ 718:	4f 93       	push	r20
+ 71a:	5f 93       	push	r21
+ 71c:	6f 93       	push	r22
+ 71e:	7f 93       	push	r23
+ 720:	8f 93       	push	r24
+ 722:	9f 93       	push	r25
+ 724:	af 93       	push	r26
+ 726:	bf 93       	push	r27
+ 728:	ef 93       	push	r30
+ 72a:	ff 93       	push	r31
+	
+	
+	
+	UART_config.IRQ_FUNCTION_RX_Complete();
+ 72c:	e0 91 b7 00 	lds	r30, 0x00B7	; 0x8000b7 <UART_config+0x8>
+ 730:	f0 91 b8 00 	lds	r31, 0x00B8	; 0x8000b8 <UART_config+0x9>
+ 734:	09 95       	icall
+	
+	
+	
+}
+ 736:	ff 91       	pop	r31
+ 738:	ef 91       	pop	r30
+ 73a:	bf 91       	pop	r27
+ 73c:	af 91       	pop	r26
+ 73e:	9f 91       	pop	r25
+ 740:	8f 91       	pop	r24
+ 742:	7f 91       	pop	r23
+ 744:	6f 91       	pop	r22
+ 746:	5f 91       	pop	r21
+ 748:	4f 91       	pop	r20
+ 74a:	3f 91       	pop	r19
+ 74c:	2f 91       	pop	r18
+ 74e:	0f 90       	pop	r0
+ 750:	0f be       	out	0x3f, r0	; 63
+ 752:	0f 90       	pop	r0
+ 754:	1f 90       	pop	r1
+ 756:	18 95       	reti
+
+00000758 <__vector_15>:
+
+void  __vector_15 (void) __attribute__((signal));
+void __vector_15 (void){
+ 758:	1f 92       	push	r1
+ 75a:	0f 92       	push	r0
+ 75c:	0f b6       	in	r0, 0x3f	; 63
+ 75e:	0f 92       	push	r0
+ 760:	11 24       	eor	r1, r1
+ 762:	2f 93       	push	r18
+ 764:	3f 93       	push	r19
+ 766:	4f 93       	push	r20
+ 768:	5f 93       	push	r21
+ 76a:	6f 93       	push	r22
+ 76c:	7f 93       	push	r23
+ 76e:	8f 93       	push	r24
+ 770:	9f 93       	push	r25
+ 772:	af 93       	push	r26
+ 774:	bf 93       	push	r27
+ 776:	ef 93       	push	r30
+ 778:	ff 93       	push	r31
+ 77a:	cf 93       	push	r28
+ 77c:	df 93       	push	r29
+ 77e:	1f 92       	push	r1
+ 780:	cd b7       	in	r28, 0x3d	; 61
+ 782:	de b7       	in	r29, 0x3e	; 62
+	unsigned char ch='*';
+ 784:	8a e2       	ldi	r24, 0x2A	; 42
+ 786:	89 83       	std	Y+1, r24	; 0x01
+	MCAL_UART_SendData(&ch,UART_ENABLE);
+ 788:	60 e0       	ldi	r22, 0x00	; 0
+ 78a:	ce 01       	movw	r24, r28
+ 78c:	01 96       	adiw	r24, 0x01	; 1
+ 78e:	0e 94 7c 02 	call	0x4f8	; 0x4f8 <MCAL_UART_SendData>
+	
+	UART_config.IRQ_FUNCTION_RX_Complete();
+ 792:	e0 91 b7 00 	lds	r30, 0x00B7	; 0x8000b7 <UART_config+0x8>
+ 796:	f0 91 b8 00 	lds	r31, 0x00B8	; 0x8000b8 <UART_config+0x9>
+ 79a:	09 95       	icall
+	
+}
+ 79c:	0f 90       	pop	r0
+ 79e:	df 91       	pop	r29
+ 7a0:	cf 91       	pop	r28
+ 7a2:	ff 91       	pop	r31
+ 7a4:	ef 91       	pop	r30
+ 7a6:	bf 91       	pop	r27
+ 7a8:	af 91       	pop	r26
+ 7aa:	9f 91       	pop	r25
+ 7ac:	8f 91       	pop	r24
+ 7ae:	7f 91       	pop	r23
+ 7b0:	6f 91       	pop	r22
+ 7b2:	5f 91       	pop	r21
+ 7b4:	4f 91       	pop	r20
+ 7b6:	3f 91       	pop	r19
+ 7b8:	2f 91       	pop	r18
+ 7ba:	0f 90       	pop	r0
+ 7bc:	0f be       	out	0x3f, r0	; 63
+ 7be:	0f 90       	pop	r0
+ 7c0:	1f 90       	pop	r1
+ 7c2:	18 95       	reti
+
+000007c4 <__tablejump2__>:
+ 7c4:	ee 0f       	add	r30, r30
+ 7c6:	ff 1f       	adc	r31, r31
+ 7c8:	05 90       	lpm	r0, Z+
+ 7ca:	f4 91       	lpm	r31, Z
+ 7cc:	e0 2d       	mov	r30, r0
+ 7ce:	09 94       	ijmp
+
+000007d0 <_exit>:
+ 7d0:	f8 94       	cli
+
+000007d2 <__stop_program>:
+ 7d2:	ff cf       	rjmp	.-2      	; 0x7d2 <__stop_program>
